@@ -65,3 +65,23 @@ print(f"O'Tooley: {otooley_percentage}% ({otooley})")
 print("------------------------------")
 print(f'Winner: {winner}')
 print("------------------------------")
+
+ouput_path = os.path.join("Analysis", "analysis.csv")
+# create function that prints out analysis to use for writerow
+#def print_analysis()
+# Open the file using "write" mode
+with open(ouput_path, 'w') as csvfile:
+    # Initialize csv.writer
+    csvwriter = csv.writer(csvfile, delimiter = ',')
+    # Write the output
+    csvfile.write("Election Results")
+    csvfile.write("----------------------------")
+    csvfile.write(f'Total Votes: {total_votes}')
+    csvfile.write("----------------------------")
+    csvfile.write(f'Khan: {khan_percentage}% ({khan})')
+    csvfile.write(f'Correy: {correy_percentage}% ({correy})')
+    csvfile.write(f'Li: {li_percentage}% ({li})')
+    csvfile.write(f"O'Tooley: {otooley_percentage}% ({otooley})")
+    csvfile.write("----------------------------")
+    csvfile.write(f'Winner: {winner}')
+    csvfile.write("----------------------------")
