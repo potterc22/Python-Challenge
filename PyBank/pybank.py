@@ -45,15 +45,31 @@ with open (pybank_csv) as csvfile:
         else:
             continue
     # Use change_amounts list to calculate average change
-    avg_change = sum(change_amounts) / len(change_amounts)
+    avg_change = round(sum(change_amounts) / len(change_amounts),2)
 
         
         
 print("Financial Analysis")
 print("---------------------------")
 print(f"Total Months: {total_months}")
-print(f"Total: {net_amount}")
-print(f"Average Change: ${round(avg_change,2)}")
+print(f"Total: ${net_amount}")
+print(f"Average Change: ${avg_change}")
 print(f"Greatest Increase in Profits: {increase_month} (${greatest_inc})")
 print(f"Greatest Decrease in Profits: {decrease_month} (${greatest_dec})")
 
+# specify the file to write our output to
+ouput_path = os.path.join("Analysis", "analysis.csv")
+# create function that prints out analysis to use for writerow
+#def print_analysis()
+# Open the file using "write" mode
+with open(ouput_path, 'w') as csvfile:
+    # Initialize csv.writer
+    csvwriter = csv.writer(csvfile, delimiter = ',')
+    # Write the rows
+    csvwriter.writerow(['Financial Analysis'])
+    csvwriter.writerow(['-------------------------------'])
+    csvwriter.writerow(['Total Months:', total_months])
+    csvwriter.writerow(['Total: $', net_amount])
+    csvwriter.writerow(['Average Change: $', avg_change])
+    csvwriter.writerow(['Greatest Increase in Profits: ', increase_month, '($', greatest_inc, ')'])
+    csvwriter.writerow(['Greatest Decrease in Profits: ', decrease_month, '($', greatest_dec, ')'])
