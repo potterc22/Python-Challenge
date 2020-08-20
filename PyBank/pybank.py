@@ -66,10 +66,11 @@ with open(ouput_path, 'w') as csvfile:
     # Initialize csv.writer
     csvwriter = csv.writer(csvfile, delimiter = ',')
     # Write the rows
-    csvwriter.writerow(['Financial Analysis'])
-    csvwriter.writerow(['-------------------------------'])
-    csvwriter.writerow(['Total Months:', total_months])
-    csvwriter.writerow(['Total: $', net_amount])
-    csvwriter.writerow(['Average Change: $', avg_change])
-    csvwriter.writerow(['Greatest Increase in Profits: ', increase_month, '($', greatest_inc, ')'])
-    csvwriter.writerow(['Greatest Decrease in Profits: ', decrease_month, '($', greatest_dec, ')'])
+    csvfile.write("Financial Analysis\n")
+    csvfile.write("---------------------------\n")
+    csvfile.write(f"Total Months: {total_months}\n")
+    csvfile.write(f"Total: ${net_amount}\n")
+    csvfile.write(f"Average Change: ${avg_change}\n")
+    csvfile.write(f"Greatest Increase in Profits: {increase_month} (${greatest_inc})\n")
+    csvfile.write(f"Greatest Decrease in Profits: {decrease_month} (${greatest_dec})\n")
+    csvfile.write("---------------------------")
