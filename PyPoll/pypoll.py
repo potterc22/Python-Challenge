@@ -26,6 +26,9 @@ with open (pybank_csv) as csvfile:
         if row[2] not in candidates:
             candidates.append(row[2])
         # Find the total number of votes each candidate won
+    # for row in csvreader:
+        #for i= 0 to last number of candidates:
+            # a
         if row[2] == "Khan":
             khan += 1
         elif row[2] == "Correy":
