@@ -44,22 +44,23 @@ with open (pybank_csv) as csvfile:
     print(f'Winner: {winner}')
     print("------------------------------")
 
-#ouput_path = os.path.join("Analysis", "analysis.csv")
-# create function that prints out analysis to use for writerow
-#def print_analysis()a
+ouput_path = os.path.join("Analysis", "analysis.csv")
+
 # Open the file using "write" mode
-#with open(ouput_path, 'w') as csvfile:
+with open(ouput_path, 'w') as csvfile:
     # Initialize csv.writer
-    #csvwriter = csv.writer(csvfile, delimiter = ',')
-    # Write the output
-    #csvfile.write("Election Results\n")
-    #csvfile.write("----------------------------\n")
-    #csvfile.write(f'Total Votes: {total_votes}\n')
-    #csvfile.write("----------------------------\n")
-    #csvfile.write(f'Khan: {khan_percentage}% ({khan})\n')
-    #csvfile.write(f'Correy: {correy_percentage}% ({correy})\n')
-    #csvfile.write(f'Li: {li_percentage}% ({li})\n')
-    #csvfile.write(f"O'Tooley: {otooley_percentage}% ({otooley})\n")
-    #csvfile.write("----------------------------\n")
-    #csvfile.write(f'Winner: {winner}\n')
-    #csvfile.write("----------------------------")
+    csvwriter = csv.writer(csvfile, delimiter = ',')
+    # Write the output similar to how we print to terminal but using write instead of print
+    csvfile.write("Election Results\n")
+    csvfile.write("----------------------------\n")
+    csvfile.write(f'Total Votes: {total_votes}\n')
+    csvfile.write("----------------------------\n")
+    for candidate in candidate_votes:
+        # Declare vote_percentage variable that divides each candidates votes and divides them by the total votes
+        vote_percentage = round(((candidate_votes[candidate]/total_votes)*100))
+        # Declare vote_count
+        vote_count = candidate_votes[candidate]
+        csvfile.write(f"{candidate}: {vote_percentage}% ({vote_count})\n")
+    csvfile.write("----------------------------\n")
+    csvfile.write(f'Winner: {winner}\n')
+    csvfile.write("----------------------------")
